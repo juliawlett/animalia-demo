@@ -54,12 +54,47 @@ const tips = [
   <header class="site-header">
     <div class="shell nav-row">
       <a class="brand" href="#inicio" aria-label="Animália — início"><img src="/images/logo-animalia.png" alt="Animália Veterinária e Pet Shop" width="158" height="131" /></a>
-      <button class="menu-toggle" aria-expanded="false" aria-controls="navigation" aria-label="Abrir menu"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg></button>
+      
+      <div class="header-actions-mobile">
+        <a class="mobile-call-btn" href="tel:+556536423588" aria-label="Ligar para emergência 24h">
+          <i data-lucide="phone-call" aria-hidden="true"></i>
+          <span>Plantão 24h</span>
+        </a>
+        <button class="menu-toggle" aria-expanded="false" aria-controls="navigation" aria-label="Abrir menu">
+          <span class="burger-bar"></span>
+          <span class="burger-bar"></span>
+          <span class="burger-bar"></span>
+        </button>
+      </div>
+
       <nav id="navigation" aria-label="Navegação principal">
-        <a href="#servicos">Serviços</a><a href="#dica-pet">Dica Pet</a><a href="#agendamento">Agendamento</a><a href="#unidades">Unidades</a>
-        <a class="nav-shop" href="https://lojaanimalia.com.br/" target="_blank" rel="noreferrer">Pet shop <i data-lucide="arrow-up-right" aria-hidden="true"></i></a>
-        <a class="button button-small" href={contact('Olá, gostaria de falar com a Animália.')} target="_blank" rel="noreferrer">Fale com a gente <i data-lucide="arrow-up-right" aria-hidden="true"></i></a>
+        <div class="mobile-nav-header">
+          <span class="mobile-nav-status"><span class="status-dot"></span> Plantão 24h Ativo</span>
+          <span class="mobile-nav-cities">Cuiabá & Várzea Grande</span>
+        </div>
+        <a href="#servicos"><i data-lucide="stethoscope" aria-hidden="true"></i> Serviços</a>
+        <a href="#dica-pet"><i data-lucide="book-open" aria-hidden="true"></i> Dica Pet</a>
+        <a href="#agendamento"><i data-lucide="calendar" aria-hidden="true"></i> Agendamento</a>
+        <a href="#unidades"><i data-lucide="map-pin" aria-hidden="true"></i> Unidades</a>
+        <a class="nav-shop" href="https://lojaanimalia.com.br/" target="_blank" rel="noreferrer"><i data-lucide="shopping-bag" aria-hidden="true"></i> Pet shop <i data-lucide="arrow-up-right" aria-hidden="true"></i></a>
+
+        <div class="mobile-nav-emergency">
+          <p class="mobile-nav-emerg-title"><i data-lucide="shield-alert" aria-hidden="true"></i> Emergência veterinária?</p>
+          <div class="mobile-nav-phones">
+            <a href="tel:+556536423588" class="mobile-phone-link">
+              <i data-lucide="phone" aria-hidden="true"></i> Cuiabá: <strong>(65) 3642-3588</strong>
+            </a>
+            <a href="tel:+556536857695" class="mobile-phone-link">
+              <i data-lucide="phone" aria-hidden="true"></i> Várzea Grande: <strong>(65) 3685-7695</strong>
+            </a>
+          </div>
+        </div>
+
+        <a class="button button-small mobile-nav-cta" href={contact('Olá, gostaria de falar com a Animália.')} target="_blank" rel="noreferrer">
+          Fale com a gente no WhatsApp <i data-lucide="arrow-up-right" aria-hidden="true"></i>
+        </a>
       </nav>
+      <div class="menu-backdrop" aria-hidden="true"></div>
     </div>
   </header>
   <main id="conteudo">
@@ -140,14 +175,19 @@ const tips = [
         <i data-lucide="clock-3"></i>
         <span>24 horas</span>
       </div>
-      <div>
+      <div class="emergency-content">
         <p class="eyebrow">Quando mais importa, estamos aqui</p>
         <h2 id="emergency-title">É urgente? Conte com a gente.</h2>
         <p>Entre em contato com a equipe para orientações imediatas sobre o atendimento.<br />Em casos de urgência ou emergência, procure diretamente uma de nossas unidades.</p>
       </div>
-      <a class="button button-white" href={contact('Olá, preciso de atendimento veterinário de urgência.')} target="_blank" rel="noreferrer">
-        Falar com o plantão <i data-lucide="arrow-up-right" aria-hidden="true"></i>
-      </a>
+      <div class="emergency-actions">
+        <a class="button button-white" href={contact('Olá, preciso de atendimento veterinário de urgência.')} target="_blank" rel="noreferrer">
+          Falar com o plantão <i data-lucide="arrow-up-right" aria-hidden="true"></i>
+        </a>
+        <a class="button button-call-emergency" href="tel:+556536423588">
+          <i data-lucide="phone-call" aria-hidden="true"></i> Ligar agora (24h)
+        </a>
+      </div>
     </section>
     <section class="section petshop-section">
       <div class="shell petshop-grid">
@@ -346,22 +386,117 @@ const tips = [
     <section id="agendamento" class="section shell booking"><div class="booking-copy"><p class="eyebrow">Um cuidado a mais na agenda</p><h2>Vamos marcar<br /><span>o próximo encontro?</span></h2><p>Escolha o serviço e a unidade de sua preferência. A solicitação vai para o WhatsApp, onde nossa equipe confirma a disponibilidade.</p><ol><li><span>1</span>Conte o que seu pet precisa.</li><li><span>2</span>Escolha a melhor unidade e data.</li><li><span>3</span>Confirme os detalhes com a equipe.</li></ol><p class="booking-note">Para serviços programados, sugerimos solicitar com dois dias de antecedência. O envio não confirma a reserva.</p></div>
       <form class="booking-form" data-whatsapp={whatsapp}><div class="form-title"><h3>Solicitar agendamento</h3><span>É rápido e simples.</span></div><label>Seu nome<input name="nome" required autocomplete="name" placeholder="Como podemos chamar você?" /></label><label>Telefone<input name="telefone" type="tel" required autocomplete="tel" placeholder="(65) 99999-9999" /></label><label>Serviço<select name="servico" required><option value="">Selecione um serviço</option>{services.map(([title]) => <option>{title}</option>)}</select></label><label>Unidade<select name="unidade" required><option value="">Selecione a unidade</option><option>Várzea Grande — Cristo Rei</option><option>Cuiabá — Bosque da Saúde</option></select></label><label class="full">Data de preferência<input name="data" type="date" required /></label><label class="full">Quer nos contar algo mais? <span>(opcional)</span><textarea name="observacoes" rows="3" placeholder="Nome do pet e outras informações"></textarea></label><button class="button full" type="submit">Continuar no WhatsApp ↗</button><p class="form-note full">Você poderá revisar a mensagem antes de enviá-la.</p></form>
     </section>
-    <section id="unidades" class="locations"><div class="shell section"><div class="section-heading"><div><p class="eyebrow">Sempre por perto</p><h2>Encontre a sua Animália.</h2></div><p>Duas unidades. O mesmo cuidado.</p></div><div class="location-grid">{[['Várzea Grande','Av. Dom Orlando Chaves, 1350','Cristo Rei','556536857695','(65) 3685-7695'],['Cuiabá','Av. Miguel Sutil, 3690 · Sala 10','Bosque da Saúde · Anexo ao Posto Petrus','556536423588','(65) 3642-3588']].map(([city,address,area,phone,label]) => <article><span class="location-tag">Clínica veterinária 24h</span><h3>{city}</h3><p>{address}<br />{area}</p><div><a href={`tel:+${phone}`}>{label}</a><a href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent('Animália '+address+' '+city)}`} target="_blank" rel="noreferrer">Como chegar ↗</a></div></article>)}</div></div></section>
+    <section id="unidades" class="locations">
+      <div class="shell section">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow"><i data-lucide="map-pin" aria-hidden="true"></i> Sempre por perto</p>
+            <h2>Encontre a sua Animália.</h2>
+          </div>
+          <p>Duas unidades preparadas para acolher você e seu companheiro com estrutura completa e plantão 24h.</p>
+        </div>
+        <div class="location-grid">
+          {[
+            ['Várzea Grande','Av. Dom Orlando Chaves, 1350','Cristo Rei','556536857695','(65) 3685-7695'],
+            ['Cuiabá','Av. Miguel Sutil, 3690 · Sala 10','Bosque da Saúde · Anexo ao Posto Petrus','556536423588','(65) 3642-3588']
+          ].map(([city,address,area,phone,label]) => (
+            <article class="location-card">
+              <div class="location-header">
+                <span class="location-tag">Clínica veterinária 24h</span>
+                <span class="location-status"><span class="status-dot"></span> Aberto</span>
+              </div>
+              <h3>{city}</h3>
+              <p class="location-address">{address}<br /><strong>{area}</strong></p>
+              <div class="location-actions">
+                <a class="btn-location-phone" href={`tel:+${phone}`} aria-label={`Ligar para unidade ${city}`}>
+                  <i data-lucide="phone" aria-hidden="true"></i> {label}
+                </a>
+                <a class="btn-location-map" href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent('Animália '+address+' '+city)}`} target="_blank" rel="noreferrer" aria-label={`Ver rotas para unidade ${city}`}>
+                  <i data-lucide="map-pin" aria-hidden="true"></i> Como chegar ↗
+                </a>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
   </main>
-  <footer><div class="shell footer-main"><a href="#inicio"><img src="/images/logo-animalia.png" alt="Animália" width="158" height="131" /></a><p>Saúde, carinho e companhia.<br />Todos os dias, em cada fase.</p><div><a href="https://www.instagram.com/clinica_animalia_/" target="_blank" rel="noreferrer">Instagram ↗</a><a href="https://www.facebook.com/animaliapetshopveterinaria" target="_blank" rel="noreferrer">Facebook ↗</a></div></div><div class="shell footer-bottom"><span>© {new Date().getFullYear()} Animália</span><span>Demo de apresentação</span></div></footer>
-  <a class="floating-contact" href={contact('Olá, gostaria de atendimento para meu pet.')} target="_blank" rel="noreferrer" aria-label="Conversar pelo WhatsApp"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 11.5a8 8 0 0 1-8 8 9 9 0 0 1-4-.9L3 20l1.4-4.7a8 8 0 1 1 15.6-3.8Z"/><path d="M8 8c0 4 4 8 8 8l1-2-3-1-1 1-3-3 1-1-1-3Z"/></svg></a>
+  <footer>
+    <div class="shell footer-main">
+      <a href="#inicio"><img src="/images/logo-animalia.png" alt="Animália" width="158" height="131" /></a>
+      <p>Saúde, carinho e companhia.<br />Todos os dias, em cada fase.</p>
+      <div>
+        <a href="https://www.instagram.com/clinica_animalia_/" target="_blank" rel="noreferrer">Instagram ↗</a>
+        <a href="https://www.facebook.com/animaliapetshopveterinaria" target="_blank" rel="noreferrer">Facebook ↗</a>
+      </div>
+    </div>
+    <div class="shell footer-bottom">
+      <span>© {new Date().getFullYear()} Animália</span>
+      <span>Demo de apresentação</span>
+    </div>
+  </footer>
+
+  <!-- Botão Flutuante Desktop -->
+  <a class="floating-contact" href={contact('Olá, gostaria de atendimento para meu pet.')} target="_blank" rel="noreferrer" aria-label="Conversar pelo WhatsApp">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 11.5a8 8 0 0 1-8 8 9 9 0 0 1-4-.9L3 20l1.4-4.7a8 8 0 1 1 15.6-3.8Z"/><path d="M8 8c0 4 4 8 8 8l1-2-3-1-1 1-3-3 1-1-1-3Z"/></svg>
+  </a>
+
+  <!-- Barra Fixa Inferior Mobile (Ergonomia ICP) -->
+  <aside class="mobile-bottom-bar" aria-label="Ações rápidas no celular">
+    <a href="tel:+556536423588" class="mobile-bar-btn call" aria-label="Ligar para plantão 24h">
+      <i data-lucide="phone-call" aria-hidden="true"></i>
+      <span>Ligar 24h</span>
+    </a>
+    <a href={contact('Olá, preciso de atendimento para meu pet.')} target="_blank" rel="noreferrer" class="mobile-bar-btn whatsapp" aria-label="Conversar no WhatsApp da emergência">
+      <i data-lucide="message-circle" aria-hidden="true"></i>
+      <span>WhatsApp 24h</span>
+    </a>
+    <a href="#agendamento" class="mobile-bar-btn booking" aria-label="Ir para agendamento">
+      <i data-lucide="calendar" aria-hidden="true"></i>
+      <span>Agendar</span>
+    </a>
+  </aside>
 </BaseLayout>
 <script>
   const toggle = document.querySelector<HTMLButtonElement>('.menu-toggle');
   const nav = document.querySelector<HTMLElement>('#navigation');
-  const closeMenu = () => { nav?.classList.remove('is-open'); toggle?.setAttribute('aria-expanded','false'); toggle?.setAttribute('aria-label','Abrir menu'); };
-  toggle?.addEventListener('click', () => { const open = nav?.classList.toggle('is-open') ?? false; toggle.setAttribute('aria-expanded',String(open)); toggle.setAttribute('aria-label',open ? 'Fechar menu' : 'Abrir menu'); });
-  nav?.querySelectorAll('a').forEach(link => link.addEventListener('click',closeMenu));
-  document.addEventListener('keydown',event => { if(event.key==='Escape') {closeMenu(); toggle?.focus();} });
+  const backdrop = document.querySelector<HTMLElement>('.menu-backdrop');
+
+  const closeMenu = () => { 
+    nav?.classList.remove('is-open'); 
+    backdrop?.classList.remove('is-active');
+    document.body.classList.remove('menu-open');
+    toggle?.setAttribute('aria-expanded','false'); 
+    toggle?.setAttribute('aria-label','Abrir menu'); 
+  };
+  
+  const openMenu = () => {
+    nav?.classList.add('is-open');
+    backdrop?.classList.add('is-active');
+    document.body.classList.add('menu-open');
+    toggle?.setAttribute('aria-expanded','true');
+    toggle?.setAttribute('aria-label','Fechar menu');
+  };
+
+  toggle?.addEventListener('click', () => { 
+    const isOpen = nav?.classList.contains('is-open');
+    if (isOpen) closeMenu();
+    else openMenu();
+  });
+
+  backdrop?.addEventListener('click', closeMenu);
+  nav?.querySelectorAll('a').forEach(link => link.addEventListener('click', closeMenu));
+  document.addEventListener('keydown', event => { 
+    if (event.key === 'Escape') { closeMenu(); toggle?.focus(); } 
+  });
+
   const form = document.querySelector<HTMLFormElement>('.booking-form');
   const date = form?.querySelector<HTMLInputElement>('[name="data"]');
-  if(date) { const today = new Date(); date.min = [today.getFullYear(),String(today.getMonth()+1).padStart(2,'0'),String(today.getDate()).padStart(2,'0')].join('-'); }
-  form?.addEventListener('submit',event => {
+  if(date) { 
+    const today = new Date(); 
+    date.min = [today.getFullYear(),String(today.getMonth()+1).padStart(2,'0'),String(today.getDate()).padStart(2,'0')].join('-'); 
+  }
+  form?.addEventListener('submit', event => {
     event.preventDefault();
     if(!form.reportValidity()) return;
     const data = new FormData(form);
@@ -369,12 +504,16 @@ const tips = [
     const message = `Olá! Sou ${data.get('nome')}. Gostaria de solicitar ${data.get('servico')} na unidade ${data.get('unidade')}, para ${selectedDate}. Telefone: ${data.get('telefone')}. Observações: ${data.get('observacoes') || 'Nenhuma'}.`;
     window.open(`https://wa.me/${form.dataset.whatsapp}?text=${encodeURIComponent(message)}`,'_blank','noopener,noreferrer');
   });
+
   window.addEventListener('load', () => {
     document.querySelectorAll<HTMLElement>('a').forEach((link) => {
       if (!/[↗→]/.test(link.textContent ?? '') || link.querySelector('[data-lucide]')) return;
       link.innerHTML = link.innerHTML.replace(/[↗→]/g, '');
-      const icon = document.createElement('i'); icon.dataset.lucide = 'arrow-up-right'; link.append(icon);
+      const icon = document.createElement('i'); 
+      icon.dataset.lucide = 'arrow-up-right'; 
+      link.append(icon);
     });
-    const lucide = (window as Window & { lucide?: { createIcons: () => void } }).lucide; lucide?.createIcons();
+    const lucide = (window as Window & { lucide?: { createIcons: () => void } }).lucide; 
+    lucide?.createIcons();
   });
 </script>
