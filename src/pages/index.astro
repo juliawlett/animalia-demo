@@ -1,0 +1,380 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+const whatsapp = '5565999582726';
+const contact = (text: string) => `https://wa.me/${whatsapp}?text=${encodeURIComponent(text)}`;
+const services = [
+  ['Clínica veterinária 24h', 'Atenção para os momentos que não podem esperar.', 'clinica-24h'],
+  ['Hotelzinho', 'Uma estadia com cuidado para seu companheiro.', 'hotelzinho'],
+  ['Transfusão de sangue', 'Suporte veterinário para cuidados especiais.', 'transfusao'],
+  ['Anestesia pet', 'Cuidado em cada etapa do procedimento.', 'anestesia'],
+  ['Vacinação', 'Prevenção que acompanha cada fase da vida.', 'vacinacao'],
+  ['Cirurgia veterinária', 'Acompanhamento antes e depois da cirurgia.', 'cirurgia'],
+  ['Internação', 'Acolhimento durante a recuperação do seu pet.', 'internacao'],
+  ['Banho e tosa', 'Higiene, conforto e aquele carinho a mais.', 'banho-tosa'],
+];
+const brands = [
+  { name: 'Royal Canin', file: 'royal-canin', tag: 'Nutrição Clínica' },
+  { name: 'PremieR Pet', file: 'premier', tag: 'Super Premium' },
+  { name: 'Zee.Dog', file: 'zee-dog', tag: 'Acessórios & Estilo' },
+  { name: 'Hill’s', file: 'hills', tag: 'Ciência Veterinária' },
+  { name: 'Golden', file: 'golden', tag: 'Nutrição Diária' },
+];
+const tips = [
+  {
+    category: 'Saúde & Imunidade',
+    tag: 'Check-up',
+    icon: 'activity',
+    title: 'Prevenção que acompanha cada fase da vida',
+    description: 'Consultas periódicas e exames de rotina detectam alterações silenciosas precocemente, garantindo mais vitalidade e longevidade.',
+    cta: 'Dúvidas sobre check-up preventivo',
+    msg: 'Olá, gostaria de saber mais sobre o check-up preventivo para meu pet.'
+  },
+  {
+    category: 'Comportamento & Sinais',
+    tag: 'Bem-estar',
+    icon: 'heart-pulse',
+    title: 'Pequenas mudanças na rotina merecem atenção',
+    description: 'Alterações no apetite, nível de energia, ingestão de água ou sono são os primeiros alertas clínicos. Conte o que você percebeu.',
+    cta: 'Avaliar sintomas com a equipe',
+    msg: 'Olá, percebi mudanças de comportamento no meu pet e gostaria de uma orientação.'
+  },
+  {
+    category: 'Odontologia Preventiva',
+    tag: 'Saúde Bucal',
+    icon: 'smile',
+    title: 'A saúde do seu companheiro começa pelo sorriso',
+    description: 'O acúmulo de tártaro e inflamações bucais podem levar bactérias para rins e coração. A higiene correta protege o organismo por inteiro.',
+    cta: 'Orientação sobre tártaro e higiene',
+    msg: 'Olá, gostaria de orientações sobre a higiene bucal e limpeza de tártaro do meu pet.'
+  }
+];
+---
+<BaseLayout>
+  <div class="utility"><div class="shell"><span>Clínica veterinária 24h • Pet shop • Estética</span><a href="#unidades">Cuiabá e Várzea Grande <i data-lucide="arrow-up-right" aria-hidden="true"></i></a></div></div>
+  <header class="site-header">
+    <div class="shell nav-row">
+      <a class="brand" href="#inicio" aria-label="Animália — início"><img src="/images/logo-animalia.png" alt="Animália Veterinária e Pet Shop" width="158" height="131" /></a>
+      <button class="menu-toggle" aria-expanded="false" aria-controls="navigation" aria-label="Abrir menu"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg></button>
+      <nav id="navigation" aria-label="Navegação principal">
+        <a href="#servicos">Serviços</a><a href="#dica-pet">Dica Pet</a><a href="#agendamento">Agendamento</a><a href="#unidades">Unidades</a>
+        <a class="nav-shop" href="https://lojaanimalia.com.br/" target="_blank" rel="noreferrer">Pet shop <i data-lucide="arrow-up-right" aria-hidden="true"></i></a>
+        <a class="button button-small" href={contact('Olá, gostaria de falar com a Animália.')} target="_blank" rel="noreferrer">Fale com a gente <i data-lucide="arrow-up-right" aria-hidden="true"></i></a>
+      </nav>
+    </div>
+  </header>
+  <main id="conteudo">
+    <section id="inicio" class="hero">
+      <div class="hero-bg-decor" aria-hidden="true">
+        <div class="decor-circle decor-circle-1"></div>
+        <div class="decor-circle decor-circle-2"></div>
+      </div>
+      <div class="shell hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow"><span class="status-dot"></span> Juntos em cada fase da vida</p>
+          <h1>Quem faz parte<br />da família merece<br /><span>todo o cuidado.</span></h1>
+          <p class="hero-description">Do banho de rotina ao atendimento veterinário 24h. A Animália está sempre por perto para acolher e cuidar do seu melhor amigo.</p>
+          <div class="hero-actions">
+            <a class="button" href={contact('Olá, preciso de atendimento para meu pet.')} target="_blank" rel="noreferrer">
+              Conversar no WhatsApp <i data-lucide="arrow-up-right" aria-hidden="true"></i>
+            </a>
+            <a class="text-link" href="#servicos">
+              Conheça nossos serviços <i data-lucide="arrow-right" aria-hidden="true"></i>
+            </a>
+          </div>
+          <div class="hero-proof">
+            <div><strong>24h</strong><span>plantão veterinário</span></div>
+            <div><strong>2 unidades</strong><span>Cuiabá e VG</span></div>
+            <div><strong>Completo</strong><span>para tantos cuidados</span></div>
+          </div>
+        </div>
+        <div class="hero-stage">
+          <div class="hero-ambient-glow" aria-hidden="true"></div>
+          <div class="hero-ambient-ring" aria-hidden="true"></div>
+          <div class="hero-img-container">
+            <img class="hero-visual-img" src="/images/hero-veterinaria-recorte.png" alt="Veterinária acolhendo um cachorro" fetchpriority="high" width="1362" height="1155" />
+          </div>
+          <div class="floating-badge badge-top">
+            <span class="badge-icon"><i data-lucide="sparkles" aria-hidden="true"></i></span>
+            <div>
+              <strong>Plantão 24 Horas</strong>
+              <span>Sempre prontos para ajudar</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="quick-links shell" aria-label="Como podemos ajudar?">
+      <a href="#agendamento"><span class="quick-number"><i data-lucide="calendar-days" aria-hidden="true"></i></span><div><h2>Vamos agendar?</h2><p>Planeje o próximo cuidado.</p></div><i data-lucide="arrow-up-right" aria-hidden="true"></i></a>
+      <a href="https://lojaanimalia.com.br/" target="_blank" rel="noreferrer"><span class="quick-number"><i data-lucide="shopping-bag" aria-hidden="true"></i></span><div><h2>Visite o pet shop</h2><p>Tudo para a rotina do seu pet.</p></div><i data-lucide="arrow-up-right" aria-hidden="true"></i></a>
+      <a href={contact('Olá, preciso de informações sobre o plantão veterinário.')} target="_blank" rel="noreferrer"><span class="quick-number"><i data-lucide="headset" aria-hidden="true"></i></span><div><h2>Precisa de ajuda agora?</h2><p>Fale com o plantão 24h.</p></div><i data-lucide="arrow-up-right" aria-hidden="true"></i></a>
+    </section>
+    <section id="servicos" class="section shell">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">Nossos serviços</p>
+          <h2>Cuidado completo.<br /><span>Do jeitinho que ele precisa.</span></h2>
+        </div>
+        <p>Saúde, prevenção e bem-estar.<br />Conheça a linha completa de cuidados veterinários da Animália para cães e gatos.</p>
+      </div>
+      <div class="service-grid">
+        {services.map(([title, description, image]) => (
+          <a class="service-card" href={contact(`Olá, gostaria de informações sobre ${title}.`)} target="_blank" rel="noreferrer">
+            <div class="service-image">
+              <img src={`/images/${image}.png`} alt={`Serviço de ${title}`} width="500" height="500" loading="lazy" />
+            </div>
+            <div class="service-body">
+              <h3>{title}</h3>
+              <p>{description}</p>
+              <span>Saiba mais <i data-lucide="arrow-up-right" aria-hidden="true"></i></span>
+            </div>
+          </a>
+        ))}
+      </div>
+      <div class="service-note">
+        <i data-lucide="info" class="service-note-icon" aria-hidden="true"></i>
+        <span><strong>Horário de atendimento:</strong> Atendimento clínico e cirúrgico de segunda a sexta, das 9h às 17h40. Plantão 24h noturno, domingos e feriados em ambas as unidades.</span>
+      </div>
+    </section>
+    <section class="emergency shell" aria-labelledby="emergency-title">
+      <div class="emergency-clock" aria-hidden="true">
+        <i data-lucide="clock-3"></i>
+        <span>24 horas</span>
+      </div>
+      <div>
+        <p class="eyebrow">Quando mais importa, estamos aqui</p>
+        <h2 id="emergency-title">É urgente? Conte com a gente.</h2>
+        <p>Entre em contato com a equipe para orientações imediatas sobre o atendimento.<br />Em casos de urgência ou emergência, procure diretamente uma de nossas unidades.</p>
+      </div>
+      <a class="button button-white" href={contact('Olá, preciso de atendimento veterinário de urgência.')} target="_blank" rel="noreferrer">
+        Falar com o plantão <i data-lucide="arrow-up-right" aria-hidden="true"></i>
+      </a>
+    </section>
+    <section class="section petshop-section">
+      <div class="shell petshop-grid">
+        <div class="shop-copy">
+          <p class="eyebrow"><i data-lucide="shopping-bag" aria-hidden="true"></i> Pet shop Animália</p>
+          <h2>Mais conforto.<br /><span>Mais momentos juntos.</span></h2>
+          <p>Alimentação de alta qualidade, caminhas confortáveis, brinquedos e itens de higiene selecionados para a rotina do seu companheiro. Tudo com a curadoria e o carinho que seu pet merece.</p>
+          
+          <div class="shop-pills-row">
+            <span class="shop-pill"><i data-lucide="sparkles" aria-hidden="true"></i> Linha Premium</span>
+            <span class="shop-pill"><i data-lucide="heart" aria-hidden="true"></i> Conforto & Estilo</span>
+            <span class="shop-pill"><i data-lucide="shield-check" aria-hidden="true"></i> Curadoria Veterinária</span>
+          </div>
+
+          <div class="shop-highlights">
+            <div class="shop-highlight-item"><i data-lucide="check-circle-2" aria-hidden="true"></i> <span>Rações das marcas mais recomendadas do mercado</span></div>
+            <div class="shop-highlight-item"><i data-lucide="check-circle-2" aria-hidden="true"></i> <span>Camas e acessórios pensados para o descanso e diversão</span></div>
+            <div class="shop-highlight-item"><i data-lucide="check-circle-2" aria-hidden="true"></i> <span>Compra prática online e entrega rápida para sua casa</span></div>
+          </div>
+
+          <div class="shop-actions">
+            <a class="button" href="https://lojaanimalia.com.br/" target="_blank" rel="noreferrer">
+              Visitar loja online <i data-lucide="arrow-up-right" aria-hidden="true"></i>
+            </a>
+            <a class="text-link" href={contact('Olá, gostaria de consultar a disponibilidade de produtos no pet shop.')} target="_blank" rel="noreferrer">
+              Consultar produto no WhatsApp <i data-lucide="arrow-right" aria-hidden="true"></i>
+            </a>
+          </div>
+        </div>
+
+        <div class="shop-stage">
+          <div class="shop-ambient-glow" aria-hidden="true"></div>
+          <div class="shop-ambient-ring" aria-hidden="true"></div>
+          <div class="shop-img-container">
+            <a class="shop-stage-link" href="https://lojaanimalia.com.br/" target="_blank" rel="noreferrer" title="Visitar loja oficial da Animália">
+              <img class="shop-visual-img" src="/images/novidade-pet.png" alt="Camas para pets: mais conforto e estilo para o soninho do seu pet" width="1200" height="630" loading="lazy" />
+            </a>
+          </div>
+          <div class="floating-badge shop-badge-top">
+            <span class="badge-icon badge-icon-shop"><i data-lucide="sparkles" aria-hidden="true"></i></span>
+            <div>
+              <strong>Novidades & Camas</strong>
+              <span>Mais estilo para o soninho</span>
+            </div>
+          </div>
+          <div class="floating-badge shop-badge-bottom">
+            <span class="badge-icon badge-icon-heart"><i data-lucide="truck" aria-hidden="true"></i></span>
+            <div>
+              <strong>Entrega com Agilidade</strong>
+              <span>Cuiabá e Várzea Grande</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section brands-section" aria-labelledby="brands-title">
+      <div class="shell">
+        <div class="brands-header">
+          <p class="eyebrow"><i data-lucide="award" aria-hidden="true"></i> Nutrição & Cuidados de Excelência</p>
+          <h2 id="brands-title">Marcas de confiança.<br /><span>Cuidado comprovado para seu pet.</span></h2>
+          <p class="brands-subtitle">Trabalhamos exclusivamente com marcas consagradas no mercado veterinário para garantir qualidade nutricional, segurança e bem-estar em todas as fases da vida.</p>
+        </div>
+        
+        <div class="brands-grid">
+          {brands.map(({ name, file, tag }) => (
+            <div class="brand-card">
+              <div class="brand-card-logo">
+                <img src={`/images/brand-${file}.png`} alt={`Logo ${name}`} width="160" height="160" loading="lazy" />
+              </div>
+              <span class="brand-tag">{tag}</span>
+            </div>
+          ))}
+        </div>
+
+        <div class="brands-trust-row">
+          <div class="trust-card">
+            <div class="trust-icon"><i data-lucide="shield-check" aria-hidden="true"></i></div>
+            <div>
+              <h4>100% Originais com Procedência</h4>
+              <p>Produtos com garantia oficial de fábrica e controle rigoroso de procedência e validade.</p>
+            </div>
+          </div>
+          <div class="trust-card">
+            <div class="trust-icon"><i data-lucide="stethoscope" aria-hidden="true"></i></div>
+            <div>
+              <h4>Prescrição e Orientação Veterinária</h4>
+              <p>Nossa equipe veterinária ajuda a encontrar a nutrição e o cuidado ideal para o seu pet.</p>
+            </div>
+          </div>
+          <div class="trust-card">
+            <div class="trust-icon"><i data-lucide="shopping-bag" aria-hidden="true"></i></div>
+            <div>
+              <h4>Pronta Entrega e Loja Virtual</h4>
+              <p>Disponível para retirada imediata nas unidades ou entrega rápida pelo site.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="dica-pet" class="tips-section" aria-labelledby="dica-pet-title">
+      <div class="shell section">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow"><i data-lucide="book-open" aria-hidden="true"></i> Dica Pet • Orientações Veterinárias</p>
+            <h2 id="dica-pet-title">Cuidar também é<br /><span>ficar bem informado.</span></h2>
+          </div>
+          <p>Dicas práticas e recomendações dos nossos médicos veterinários para você cuidar com carinho, segurança e prevenção em todas as etapas da vida do seu pet.</p>
+        </div>
+
+        <div class="tips-grid">
+          <!-- Card Destaque: Vacinação -->
+          <article class="tip-feature-card">
+            <div class="tip-feature-image-wrap">
+              <img class="tip-visual-img" src="/images/dica-vacinas.png" alt="Dica Pet: as vacinas são indispensáveis para seu pet" width="1200" height="630" loading="lazy" />
+              <div class="tip-feature-pill">
+                <i data-lucide="shield-check" aria-hidden="true"></i>
+                <span>Guia de Imunização</span>
+              </div>
+            </div>
+            <div class="tip-feature-content">
+              <div class="tip-meta">
+                <span class="tip-category-badge">Vacinação Veterinária</span>
+                <span class="tip-reading-time"><i data-lucide="clock" aria-hidden="true"></i> 2 min de leitura</span>
+              </div>
+              <h3>Vacinas em dia: o escudo indispensável para a proteção do seu pet</h3>
+              <p>Manter o protocolo de imunização completo (múltiplas para cães e gatos, antirrábica e complementares) é o cuidado mais eficaz para prevenir doenças graves e contagiosas.</p>
+              
+              <div class="tip-highlights">
+                <div class="tip-highlight-item">
+                  <i data-lucide="check-circle-2" aria-hidden="true"></i>
+                  <span>Protocolos personalizados para filhotes, adultos e idosos</span>
+                </div>
+                <div class="tip-highlight-item">
+                  <i data-lucide="check-circle-2" aria-hidden="true"></i>
+                  <span>Vacinas éticas com cadeia de refrigeração estritamente monitorada</span>
+                </div>
+                <div class="tip-highlight-item">
+                  <i data-lucide="check-circle-2" aria-hidden="true"></i>
+                  <span>Exame clínico prévio para aplicação segura e confortável</span>
+                </div>
+              </div>
+
+              <div class="tip-feature-action">
+                <a class="button button-small" href={contact('Olá, gostaria de orientações sobre o calendário de vacinação do meu pet.')} target="_blank" rel="noreferrer">
+                  Conversar sobre vacinas <i data-lucide="arrow-up-right" aria-hidden="true"></i>
+                </a>
+                <span class="tip-action-note"><i data-lucide="sparkles" aria-hidden="true"></i> Plantão em Cuiabá e VG</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Cards Companheiros -->
+          <div class="tip-cards-column">
+            {tips.map(({ category, tag, icon, title, description, cta, msg }) => (
+              <article class="tip-card">
+                <div class="tip-card-header">
+                  <div class="tip-card-icon">
+                    <i data-lucide={icon} aria-hidden="true"></i>
+                  </div>
+                  <div class="tip-card-tags">
+                    <span class="tip-tag-pill">{tag}</span>
+                    <span class="tip-card-category">{category}</span>
+                  </div>
+                </div>
+                <div class="tip-card-body">
+                  <h3>{title}</h3>
+                  <p>{description}</p>
+                </div>
+                <div class="tip-card-footer">
+                  <a href={contact(msg)} target="_blank" rel="noreferrer" class="tip-card-link">
+                    <span>{cta}</span>
+                    <i data-lucide="arrow-up-right" aria-hidden="true"></i>
+                  </a>
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+
+        <!-- Banner de Suporte e Acolhimento -->
+        <div class="tips-support-bar">
+          <div class="tips-support-icon">
+            <i data-lucide="stethoscope" aria-hidden="true"></i>
+          </div>
+          <div class="tips-support-copy">
+            <h4>Ficou com alguma dúvida sobre a saúde ou rotina do seu pet?</h4>
+            <p>Nossa equipe médica veterinária está à disposição nas unidades de Cuiabá e Várzea Grande com plantão 24h para orientar sobre vacinas, sintomas e cuidados essenciais.</p>
+          </div>
+          <a class="button button-small" href={contact('Olá, gostaria de tirar uma dúvida veterinária com a equipe.')} target="_blank" rel="noreferrer">
+            Falar com a equipe veterinária <i data-lucide="arrow-up-right" aria-hidden="true"></i>
+          </a>
+        </div>
+      </div>
+    </section>
+    <section id="agendamento" class="section shell booking"><div class="booking-copy"><p class="eyebrow">Um cuidado a mais na agenda</p><h2>Vamos marcar<br /><span>o próximo encontro?</span></h2><p>Escolha o serviço e a unidade de sua preferência. A solicitação vai para o WhatsApp, onde nossa equipe confirma a disponibilidade.</p><ol><li><span>1</span>Conte o que seu pet precisa.</li><li><span>2</span>Escolha a melhor unidade e data.</li><li><span>3</span>Confirme os detalhes com a equipe.</li></ol><p class="booking-note">Para serviços programados, sugerimos solicitar com dois dias de antecedência. O envio não confirma a reserva.</p></div>
+      <form class="booking-form" data-whatsapp={whatsapp}><div class="form-title"><h3>Solicitar agendamento</h3><span>É rápido e simples.</span></div><label>Seu nome<input name="nome" required autocomplete="name" placeholder="Como podemos chamar você?" /></label><label>Telefone<input name="telefone" type="tel" required autocomplete="tel" placeholder="(65) 99999-9999" /></label><label>Serviço<select name="servico" required><option value="">Selecione um serviço</option>{services.map(([title]) => <option>{title}</option>)}</select></label><label>Unidade<select name="unidade" required><option value="">Selecione a unidade</option><option>Várzea Grande — Cristo Rei</option><option>Cuiabá — Bosque da Saúde</option></select></label><label class="full">Data de preferência<input name="data" type="date" required /></label><label class="full">Quer nos contar algo mais? <span>(opcional)</span><textarea name="observacoes" rows="3" placeholder="Nome do pet e outras informações"></textarea></label><button class="button full" type="submit">Continuar no WhatsApp ↗</button><p class="form-note full">Você poderá revisar a mensagem antes de enviá-la.</p></form>
+    </section>
+    <section id="unidades" class="locations"><div class="shell section"><div class="section-heading"><div><p class="eyebrow">Sempre por perto</p><h2>Encontre a sua Animália.</h2></div><p>Duas unidades. O mesmo cuidado.</p></div><div class="location-grid">{[['Várzea Grande','Av. Dom Orlando Chaves, 1350','Cristo Rei','556536857695','(65) 3685-7695'],['Cuiabá','Av. Miguel Sutil, 3690 · Sala 10','Bosque da Saúde · Anexo ao Posto Petrus','556536423588','(65) 3642-3588']].map(([city,address,area,phone,label]) => <article><span class="location-tag">Clínica veterinária 24h</span><h3>{city}</h3><p>{address}<br />{area}</p><div><a href={`tel:+${phone}`}>{label}</a><a href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent('Animália '+address+' '+city)}`} target="_blank" rel="noreferrer">Como chegar ↗</a></div></article>)}</div></div></section>
+  </main>
+  <footer><div class="shell footer-main"><a href="#inicio"><img src="/images/logo-animalia.png" alt="Animália" width="158" height="131" /></a><p>Saúde, carinho e companhia.<br />Todos os dias, em cada fase.</p><div><a href="https://www.instagram.com/clinica_animalia_/" target="_blank" rel="noreferrer">Instagram ↗</a><a href="https://www.facebook.com/animaliapetshopveterinaria" target="_blank" rel="noreferrer">Facebook ↗</a></div></div><div class="shell footer-bottom"><span>© {new Date().getFullYear()} Animália</span><span>Demo de apresentação</span></div></footer>
+  <a class="floating-contact" href={contact('Olá, gostaria de atendimento para meu pet.')} target="_blank" rel="noreferrer" aria-label="Conversar pelo WhatsApp"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 11.5a8 8 0 0 1-8 8 9 9 0 0 1-4-.9L3 20l1.4-4.7a8 8 0 1 1 15.6-3.8Z"/><path d="M8 8c0 4 4 8 8 8l1-2-3-1-1 1-3-3 1-1-1-3Z"/></svg></a>
+</BaseLayout>
+<script>
+  const toggle = document.querySelector<HTMLButtonElement>('.menu-toggle');
+  const nav = document.querySelector<HTMLElement>('#navigation');
+  const closeMenu = () => { nav?.classList.remove('is-open'); toggle?.setAttribute('aria-expanded','false'); toggle?.setAttribute('aria-label','Abrir menu'); };
+  toggle?.addEventListener('click', () => { const open = nav?.classList.toggle('is-open') ?? false; toggle.setAttribute('aria-expanded',String(open)); toggle.setAttribute('aria-label',open ? 'Fechar menu' : 'Abrir menu'); });
+  nav?.querySelectorAll('a').forEach(link => link.addEventListener('click',closeMenu));
+  document.addEventListener('keydown',event => { if(event.key==='Escape') {closeMenu(); toggle?.focus();} });
+  const form = document.querySelector<HTMLFormElement>('.booking-form');
+  const date = form?.querySelector<HTMLInputElement>('[name="data"]');
+  if(date) { const today = new Date(); date.min = [today.getFullYear(),String(today.getMonth()+1).padStart(2,'0'),String(today.getDate()).padStart(2,'0')].join('-'); }
+  form?.addEventListener('submit',event => {
+    event.preventDefault();
+    if(!form.reportValidity()) return;
+    const data = new FormData(form);
+    const selectedDate = String(data.get('data')).split('-').reverse().join('/');
+    const message = `Olá! Sou ${data.get('nome')}. Gostaria de solicitar ${data.get('servico')} na unidade ${data.get('unidade')}, para ${selectedDate}. Telefone: ${data.get('telefone')}. Observações: ${data.get('observacoes') || 'Nenhuma'}.`;
+    window.open(`https://wa.me/${form.dataset.whatsapp}?text=${encodeURIComponent(message)}`,'_blank','noopener,noreferrer');
+  });
+  window.addEventListener('load', () => {
+    document.querySelectorAll<HTMLElement>('a').forEach((link) => {
+      if (!/[↗→]/.test(link.textContent ?? '') || link.querySelector('[data-lucide]')) return;
+      link.innerHTML = link.innerHTML.replace(/[↗→]/g, '');
+      const icon = document.createElement('i'); icon.dataset.lucide = 'arrow-up-right'; link.append(icon);
+    });
+    const lucide = (window as Window & { lucide?: { createIcons: () => void } }).lucide; lucide?.createIcons();
+  });
+</script>

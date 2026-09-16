@@ -1,0 +1,19 @@
+---
+import '../styles/global.css';
+interface Props { title?: string; description?: string; }
+const { title = 'Animália | Clínica veterinária 24h e pet shop', description = 'Cuidado veterinário, banho e tosa e pet shop em Cuiabá e Várzea Grande. Conheça nossos serviços e fale com a Animália.' } = Astro.props;
+---
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#163f72" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet" />
+    <title>{title}</title>
+  </head>
+  <body><a class="skip-link" href="#conteudo">Pular para o conteúdo</a><slot /><style is="global">[data-lucide]{width:16px;height:16px;stroke-width:2;vertical-align:middle;display:inline-block}.quick-number [data-lucide]{width:17px;height:17px}.emergency-clock [data-lucide]{width:54px;height:54px;stroke-width:1.6;display:block;margin:auto auto 4px}.caption-cross [data-lucide]{width:20px;height:20px}</style><script is:inline src="https://unpkg.com/lucide@0.468.0/dist/umd/lucide.js"></script><script is:inline>window.addEventListener('load',()=>window.lucide?.createIcons());</script></body>
+</html>
