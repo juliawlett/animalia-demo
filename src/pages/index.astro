@@ -53,19 +53,9 @@ const tips = [
   <div class="utility"><div class="shell"><span>Clínica veterinária 24h • Pet shop • Estética</span><a href="#unidades">Cuiabá e Várzea Grande <i data-lucide="arrow-up-right" aria-hidden="true"></i></a></div></div>
   <header class="site-header">
     <div class="shell nav-row">
-      <a class="brand" href="#inicio" aria-label="Animália — início"><img src="/images/logo-animalia.png" alt="Animália Veterinária e Pet Shop" width="158" height="131" /></a>
-      
-      <div class="header-actions-mobile">
-        <a class="mobile-call-btn" href="tel:+556536423588" aria-label="Ligar para emergência 24h">
-          <i data-lucide="phone-call" aria-hidden="true"></i>
-          <span>Plantão 24h</span>
-        </a>
-        <button class="menu-toggle" aria-expanded="false" aria-controls="navigation" aria-label="Abrir menu">
-          <span class="burger-bar"></span>
-          <span class="burger-bar"></span>
-          <span class="burger-bar"></span>
-        </button>
-      </div>
+      <a class="brand" href="#inicio" aria-label="Animália — início">
+        <img src="/images/logo-animalia.png" alt="Animália Veterinária e Pet Shop" width="158" height="131" />
+      </a>
 
       <nav id="navigation" aria-label="Navegação principal">
         <div class="mobile-nav-header">
@@ -94,6 +84,33 @@ const tips = [
           Fale com a gente no WhatsApp <i data-lucide="arrow-up-right" aria-hidden="true"></i>
         </a>
       </nav>
+
+      <div class="header-actions-desktop">
+        <a class="desktop-emergency-badge" href="tel:+556536423588" title="Ligar para plantão veterinário 24h">
+          <span class="emergency-pulse-dot" aria-hidden="true"></span>
+          <span class="emergency-info">
+            <strong class="emergency-label">Plantão 24h</strong>
+            <span class="emergency-phone">(65) 3642-3588</span>
+          </span>
+        </a>
+        <a class="button button-small header-cta-desktop" href={contact('Olá, gostaria de falar com a Animália.')} target="_blank" rel="noreferrer">
+          <span>WhatsApp 24h</span>
+          <i data-lucide="arrow-up-right" aria-hidden="true"></i>
+        </a>
+      </div>
+
+      <div class="header-actions-mobile">
+        <a class="mobile-call-btn" href="tel:+556536423588" aria-label="Ligar para emergência 24h">
+          <i data-lucide="phone-call" aria-hidden="true"></i>
+          <span>Plantão 24h</span>
+        </a>
+        <button class="menu-toggle" aria-expanded="false" aria-controls="navigation" aria-label="Abrir menu">
+          <span class="burger-bar"></span>
+          <span class="burger-bar"></span>
+          <span class="burger-bar"></span>
+        </button>
+      </div>
+
       <div class="menu-backdrop" aria-hidden="true"></div>
     </div>
   </header>
@@ -461,6 +478,14 @@ const tips = [
   const toggle = document.querySelector<HTMLButtonElement>('.menu-toggle');
   const nav = document.querySelector<HTMLElement>('#navigation');
   const backdrop = document.querySelector<HTMLElement>('.menu-backdrop');
+  const header = document.querySelector<HTMLElement>('.site-header');
+
+  const updateHeaderPosition = () => {
+    if (header) {
+      const rect = header.getBoundingClientRect();
+      document.documentElement.style.setProperty('--header-bar-height', `${Math.max(64, Math.round(rect.bottom))}px`);
+    }
+  };
 
   const closeMenu = () => { 
     nav?.classList.remove('is-open'); 
@@ -471,6 +496,7 @@ const tips = [
   };
   
   const openMenu = () => {
+    updateHeaderPosition();
     nav?.classList.add('is-open');
     backdrop?.classList.add('is-active');
     document.body.classList.add('menu-open');
@@ -489,6 +515,9 @@ const tips = [
   document.addEventListener('keydown', event => { 
     if (event.key === 'Escape') { closeMenu(); toggle?.focus(); } 
   });
+  window.addEventListener('resize', updateHeaderPosition);
+  window.addEventListener('scroll', updateHeaderPosition, { passive: true });
+  updateHeaderPosition();
 
   const form = document.querySelector<HTMLFormElement>('.booking-form');
   const date = form?.querySelector<HTMLInputElement>('[name="data"]');
